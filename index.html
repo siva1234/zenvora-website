@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Zenvora Technologies — specialist IT recruitment and staffing partner for growing companies across India.">
+<meta name="theme-color" content="#081B2A">
+<title>Zenvora Technologies — IT Recruitment Partner</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#081B2A; --navy-2:#0D3048; --teal:#1D8EAE; --teal-2:#65D1E8;
+  --ink:#17212B; --muted:#627180; --soft:#F4F8FA; --white:#fff;
+  --line:#DDE6EC; --max:1180px; --shadow:0 20px 60px rgba(8,27,42,.10);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:84px}
+body{margin:0;font-family:Inter,system-ui,sans-serif;color:var(--ink);line-height:1.65;background:#fff;-webkit-font-smoothing:antialiased}
+body.menu-open{overflow:hidden}
+h1,h2,h3,h4,h5{font-family:Sora,system-ui,sans-serif;color:var(--navy);margin:0;letter-spacing:-.035em}
+a{color:inherit;text-decoration:none}
+button,input,textarea{font:inherit}
+.wrap{width:min(var(--max),calc(100% - 48px));margin:auto}
+section{padding:100px 0}
+.tag{display:inline-flex;align-items:center;gap:8px;font-size:.75rem;font-weight:800;letter-spacing:.1em;color:var(--teal);background:#EAF8FB;border:1px solid #D5F0F5;padding:7px 12px;border-radius:999px;margin-bottom:18px}
+.tag:before{content:"";width:6px;height:6px;border-radius:50%;background:var(--teal)}
+.section-head{max-width:700px;margin-bottom:52px}
+.section-head.center{margin-inline:auto;text-align:center}
+.section-head h2{font-size:clamp(2rem,4vw,3rem);line-height:1.12}
+.section-head p{margin:16px 0 0;color:var(--muted);font-size:1.04rem}
+.reveal{opacity:0;transform:translateY(22px);transition:opacity .7s ease,transform .7s ease}
+.reveal.visible{opacity:1;transform:none}
+
+/* Header */
+header{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.88);backdrop-filter:blur(16px);border-bottom:1px solid rgba(221,230,236,.8)}
+.nav{min-height:78px;display:flex;align-items:center;justify-content:space-between;gap:28px}
+.brand{display:flex;align-items:center;gap:11px;font-family:Sora,sans-serif;font-weight:800;color:var(--navy);white-space:nowrap}
+.mark{width:38px;height:38px;border-radius:11px;background:linear-gradient(135deg,var(--teal),var(--navy));display:grid;place-items:center;color:#fff;font-size:1rem;box-shadow:0 8px 22px rgba(29,142,174,.22)}
+.nav-links{display:flex;align-items:center;gap:30px;list-style:none;margin:0;padding:0}
+.nav-links a{font-size:.9rem;font-weight:650;color:#334657;transition:.2s}
+.nav-links a:hover{color:var(--teal)}
+.nav-cta,.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border-radius:10px;font-weight:750;transition:transform .2s,box-shadow .2s,background .2s}
+.nav-cta{padding:11px 18px;color:#fff!important;background:var(--teal);box-shadow:0 8px 22px rgba(29,142,174,.18)}
+.nav-cta:hover,.btn:hover{transform:translateY(-2px)}
+.menu-btn{display:none;border:0;background:transparent;font-size:1.5rem;color:var(--navy);cursor:pointer}
+
+/* Hero */
+.hero{position:relative;overflow:hidden;padding:104px 0 92px;background:
+ radial-gradient(circle at 82% 20%,rgba(101,209,232,.17),transparent 28%),
+ radial-gradient(circle at 12% 80%,rgba(29,142,174,.15),transparent 30%),
+ linear-gradient(135deg,#071A29 0%,#0B2D45 58%,#0A3B52 100%);color:#fff}
+.hero:after{content:"";position:absolute;inset:auto -10% -55% -10%;height:300px;background:rgba(255,255,255,.04);filter:blur(40px);border-radius:50%}
+.hero-inner{position:relative;z-index:1;display:grid;grid-template-columns:1.1fr .9fr;gap:70px;align-items:center}
+.hero .tag{color:#A7E8F3;background:rgba(101,209,232,.10);border-color:rgba(101,209,232,.2)}
+.hero h1{color:#fff;font-size:clamp(2.7rem,5vw,4.6rem);line-height:1.04;max-width:760px}
+.hero h1 span{color:#7DE1F0}
+.hero p{margin:24px 0 0;color:#C8D8E2;max-width:650px;font-size:1.08rem}
+.hero-actions{margin-top:34px;display:flex;flex-wrap:wrap;gap:12px}
+.btn{padding:14px 22px;border:1px solid transparent}
+.btn-primary{background:var(--teal);color:#fff;box-shadow:0 12px 28px rgba(29,142,174,.22)}
+.btn-primary:hover{background:#259BB9}
+.btn-outline{color:#fff;border-color:rgba(255,255,255,.25);background:rgba(255,255,255,.05)}
+.btn-outline:hover{background:rgba(255,255,255,.10)}
+.hero-proof{margin-top:28px;display:flex;align-items:center;gap:12px;color:#AFC1CC;font-size:.84rem}
+.proof-dot{width:9px;height:9px;background:#6EE7B7;border-radius:50%;box-shadow:0 0 0 5px rgba(110,231,183,.10)}
+.hero-panel{background:linear-gradient(180deg,rgba(255,255,255,.10),rgba(255,255,255,.045));border:1px solid rgba(255,255,255,.15);border-radius:22px;padding:28px;box-shadow:0 30px 80px rgba(0,0,0,.18);backdrop-filter:blur(12px)}
+.panel-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}
+.panel-title{font-family:Sora;font-weight:700;color:#fff}
+.panel-badge{font-size:.72rem;font-weight:800;color:#A7E8F3;border:1px solid rgba(167,232,243,.22);padding:5px 9px;border-radius:999px}
+.hero-panel .row{display:flex;justify-content:space-between;gap:18px;padding:17px 0;border-bottom:1px solid rgba(255,255,255,.10);font-size:.9rem;color:#B9CAD5}
+.hero-panel .row:last-child{border-bottom:0}
+.hero-panel strong{color:#fff;font-weight:700;text-align:right}
+.mini-chart{margin-top:22px;padding:16px;border-radius:14px;background:rgba(0,0,0,.12);border:1px solid rgba(255,255,255,.07)}
+.bars{height:68px;display:flex;align-items:end;gap:8px}
+.bars i{display:block;flex:1;border-radius:5px 5px 2px 2px;background:linear-gradient(180deg,#65D1E8,#1D8EAE);opacity:.8}
+.mini-caption{display:flex;justify-content:space-between;margin-top:8px;font-size:.72rem;color:#9FB4C0}
+
+/* Stats */
+.stats-bar{position:relative;z-index:2;margin-top:-1px;background:#fff;border-bottom:1px solid var(--line)}
+.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);padding:34px 0}
+.stat{padding:0 24px;border-right:1px solid var(--line)}
+.stat:first-child{padding-left:0}.stat:last-child{border-right:0;padding-right:0}
+.stat .num{font-family:Sora;font-size:1.65rem;font-weight:800;color:var(--navy)}
+.stat .label{margin-top:3px;color:var(--muted);font-size:.8rem}
+
+/* Services */
+.services-bg{background:linear-gradient(180deg,#F6FAFC 0%,#F1F6F8 100%)}
+.service-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.service-card{position:relative;background:#fff;border:1px solid var(--line);border-radius:18px;padding:30px;min-height:220px;overflow:hidden;transition:.25s}
+.service-card:after{content:"";position:absolute;width:120px;height:120px;right:-55px;top:-55px;border-radius:50%;background:#EAF8FB}
+.service-card:hover{transform:translateY(-5px);box-shadow:var(--shadow);border-color:#C6E8EF}
+.service-icon{position:relative;z-index:1;width:44px;height:44px;border-radius:12px;background:#EAF8FB;color:var(--teal);display:grid;place-items:center;font-family:Sora;font-size:.78rem;font-weight:800;margin-bottom:22px}
+.service-card h3{font-size:1.08rem;margin-bottom:9px}
+.service-card p{margin:0;color:var(--muted);font-size:.9rem}
+
+/* Process */
+.process-wrap{display:grid;grid-template-columns:.75fr 1.25fr;gap:70px;align-items:start}
+.process-line{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.process-step{padding:24px;border:1px solid var(--line);border-radius:16px;background:#fff;transition:.2s}
+.process-step:hover{box-shadow:var(--shadow);transform:translateY(-3px)}
+.process-step .circle{width:38px;height:38px;border-radius:12px;background:var(--navy);color:#fff;display:grid;place-items:center;font-family:Sora;font-weight:800;font-size:.82rem;margin-bottom:18px}
+.process-step h4{font-size:1rem;margin-bottom:7px}
+.process-step p{margin:0;color:var(--muted);font-size:.86rem}
+.process-note{margin-top:22px;padding:18px;border-radius:14px;background:#F3FAFC;border:1px solid #D9EEF3;color:#45616F;font-size:.86rem}
+
+/* Quote */
+.testimonial-bg{padding:90px 0;background:var(--navy);color:#fff;overflow:hidden;position:relative}
+.testimonial-bg:before{content:"“";position:absolute;font:800 16rem/1 Sora;color:rgba(255,255,255,.035);left:4%;top:-35px}
+.testimonial-box{max-width:820px;margin:auto;text-align:center;position:relative}
+.testimonial-box blockquote{font-family:Sora;font-size:clamp(1.45rem,3vw,2.15rem);line-height:1.4;font-weight:600;margin:0;color:#fff}
+.testimonial-box .attribution{margin-top:25px;color:#9FC1D3;font-size:.9rem}
+
+/* Industries */
+.industries-wrap{padding:30px 0}
+.industries{display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px;padding:24px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.industries span{font-size:.75rem;font-weight:800;letter-spacing:.08em;color:#758593}
+
+/* About */
+.about-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:70px;align-items:center}
+.about-copy p{color:var(--muted);font-size:1rem}
+.about-points{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:26px}
+.about-point{padding:15px;border:1px solid var(--line);border-radius:13px;font-size:.85rem;font-weight:650;color:#405361;background:#fff}
+.about-point:before{content:"✓";color:var(--teal);font-weight:900;margin-right:8px}
+.founder-box{background:linear-gradient(145deg,#F5FAFC,#EDF6F8);border:1px solid #D8E9EE;border-radius:22px;padding:34px;box-shadow:var(--shadow)}
+.founder-box .initials{width:60px;height:60px;background:linear-gradient(135deg,var(--teal),var(--navy));color:#fff;border-radius:18px;display:grid;place-items:center;font-family:Sora;font-weight:800;margin-bottom:20px}
+.founder-box h4{font-size:1.2rem}.founder-box .role{color:var(--teal);font-size:.84rem;font-weight:750;margin-top:3px}
+.founder-box p.bio{margin:16px 0 0;color:var(--muted);font-size:.9rem}
+
+/* CTA */
+.cta-banner{position:relative;overflow:hidden;background:linear-gradient(135deg,var(--teal),#146B88);color:#fff;border-radius:24px;padding:54px;display:flex;justify-content:space-between;align-items:center;gap:30px;box-shadow:0 24px 60px rgba(29,142,174,.18)}
+.cta-banner:after{content:"";position:absolute;width:260px;height:260px;right:-80px;top:-110px;border-radius:50%;border:45px solid rgba(255,255,255,.06)}
+.cta-banner > *{position:relative;z-index:1}
+.cta-banner h2{color:#fff;font-size:1.85rem}.cta-banner p{color:#DDF6FA;margin:7px 0 0}
+.cta-banner .btn-primary{background:var(--navy);box-shadow:none}
+
+/* Contact */
+.contact-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:55px}
+.contact-info-card{background:#F6F9FB;border:1px solid var(--line);border-radius:20px;padding:26px}
+.contact-info-card h3{font-size:1.05rem;margin-bottom:8px}
+.contact-info-card > p{font-size:.86rem;color:var(--muted);margin:0 0 12px}
+.contact-info-card .row{display:flex;justify-content:space-between;gap:18px;padding:17px 0;border-bottom:1px solid var(--line);font-size:.9rem}
+.contact-info-card .row:last-child{border-bottom:0}
+.contact-info-card .row span:first-child{color:var(--muted)}.contact-info-card a{color:var(--teal);font-weight:700}
+form{display:flex;flex-direction:column;gap:15px}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:15px}
+.field{display:flex;flex-direction:column;gap:6px}
+label{font-size:.8rem;font-weight:750;color:var(--navy)}
+input,textarea{width:100%;padding:13px 14px;border:1px solid #D5E0E7;border-radius:10px;background:#fff;color:var(--ink);outline:0;transition:.2s}
+input:focus,textarea:focus{border-color:var(--teal);box-shadow:0 0 0 4px rgba(29,142,174,.08)}
+textarea{resize:vertical}
+.form-status{font-size:.84rem;color:var(--teal);min-height:20px}
+
+/* Footer */
+footer{background:#061824;color:#9FB0BC;padding:58px 0 26px}
+.footer-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:32px;padding-bottom:38px;border-bottom:1px solid rgba(255,255,255,.09)}
+.footer-grid h5{color:#fff;font-size:.9rem;margin-bottom:15px}.footer-grid ul{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:9px}.footer-grid a{font-size:.84rem;color:#9FB0BC}.footer-grid a:hover{color:#fff}
+.footer-brand p{font-size:.84rem;max-width:34ch;margin:15px 0 0}
+.footer-bottom{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;padding-top:22px;font-size:.78rem;color:#718591}
+
+/* Responsive */
+@media(max-width:980px){
+  .nav-links{display:none}.nav-cta{display:none}.menu-btn{display:block}
+  .nav-links.mobile-open{display:flex;position:fixed;inset:78px 0 0;background:#fff;flex-direction:column;align-items:flex-start;padding:30px 24px;gap:22px;border-top:1px solid var(--line)}
+  .nav-links.mobile-open a{font-size:1rem}
+  .hero-inner,.process-wrap,.about-grid,.contact-grid{grid-template-columns:1fr}
+  .hero-inner{gap:45px}.process-wrap{gap:35px}.about-grid{gap:35px}
+  .service-grid{grid-template-columns:1fr 1fr}
+  .stats-grid{grid-template-columns:1fr 1fr;gap:25px}.stat{border-right:0;padding:0}.stat:nth-child(-n+2){padding-bottom:20px;border-bottom:1px solid var(--line)}
+  .footer-grid{grid-template-columns:1fr 1fr}
+}
+@media(max-width:620px){
+  .wrap{width:min(var(--max),calc(100% - 36px))}
+  section{padding:72px 0}
+  .hero{padding:78px 0 70px}.hero h1{font-size:2.55rem}.hero p{font-size:1rem}
+  .hero-actions .btn{width:100%}
+  .service-grid,.process-line,.form-row,.about-points{grid-template-columns:1fr}
+  .stats-grid{grid-template-columns:1fr}.stat:nth-child(-n+2){border-bottom:0;padding-bottom:0}.stat{padding:4px 0}
+  .cta-banner{padding:34px 26px;align-items:flex-start;flex-direction:column}.cta-banner .btn{width:100%}
+  .industries{justify-content:flex-start}.industries span{width:calc(50% - 8px)}
+  .footer-grid{grid-template-columns:1fr 1fr}.footer-brand{grid-column:1/-1}
+  .footer-bottom{flex-direction:column}
+}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.reveal{opacity:1;transform:none;transition:none}.service-card,.process-step,.btn{transition:none}}
+
+/* --- Zenvora visual graphics --- */
+.hero-visual{position:relative;min-height:470px;display:grid;place-items:center}
+.hero-orbit{position:absolute;width:410px;height:410px;border:1px solid rgba(125,225,240,.18);border-radius:50%;animation:spin 24s linear infinite}
+.hero-orbit:before,.hero-orbit:after{content:"";position:absolute;border-radius:50%;background:#65D1E8;box-shadow:0 0 28px rgba(101,209,232,.45)}
+.hero-orbit:before{width:10px;height:10px;top:36px;left:62px}.hero-orbit:after{width:7px;height:7px;right:38px;bottom:74px}
+.hero-graphic{position:relative;width:min(390px,90%);aspect-ratio:1/1;border-radius:30px;background:linear-gradient(145deg,rgba(255,255,255,.14),rgba(255,255,255,.045));border:1px solid rgba(255,255,255,.18);box-shadow:0 35px 90px rgba(0,0,0,.25);backdrop-filter:blur(14px);padding:24px;transform:rotate(-2deg)}
+.hero-graphic .window{height:100%;border-radius:20px;background:#F7FBFC;overflow:hidden;box-shadow:0 18px 45px rgba(0,0,0,.16)}
+.window-top{height:42px;display:flex;align-items:center;gap:6px;padding:0 16px;border-bottom:1px solid #E0E9EE;background:#fff}
+.window-top i{width:7px;height:7px;border-radius:50%;background:#B7C7CF}
+.window-body{padding:22px}.visual-label{font-size:.68rem;font-weight:800;letter-spacing:.1em;color:#78909C}
+.visual-title{font:800 1.35rem/1.15 Sora;color:#0B2638;margin-top:7px}
+.candidate-row{display:flex;align-items:center;gap:10px;padding:13px 0;border-bottom:1px solid #E7EEF2}
+.avatar{width:34px;height:34px;border-radius:10px;background:linear-gradient(135deg,#D9F4F8,#9BDDEA);display:grid;place-items:center;color:#0B5269;font-weight:800;font-size:.75rem}
+.candidate-info{flex:1}.candidate-info strong{display:block;font-size:.76rem;color:#193548}.candidate-info span{font-size:.66rem;color:#718391}
+.score{font:800 .72rem Sora;color:#16809C;background:#E9F8FB;border-radius:999px;padding:5px 7px}
+.visual-footer{margin-top:18px;display:flex;justify-content:space-between;align-items:center;padding:12px;border-radius:12px;background:#EDF7F9}
+.visual-footer strong{font-size:.74rem;color:#12465B}.visual-footer span{font-size:.65rem;color:#5F7784}
+@keyframes spin{to{transform:rotate(360deg)}}
+.process-visual{margin-bottom:18px;height:130px;border-radius:14px;background:linear-gradient(145deg,#F3FAFC,#E8F5F8);border:1px solid #DCECEF;display:grid;place-items:center;overflow:hidden}
+.process-visual svg{width:92%;height:92%}
+.process-step{overflow:hidden}
+.services-intro-visual{display:grid;grid-template-columns:1.25fr .75fr;gap:24px;align-items:stretch;margin-bottom:34px}
+.service-banner{border-radius:20px;min-height:210px;padding:28px;background:linear-gradient(135deg,#09263A,#0C526D);color:#fff;position:relative;overflow:hidden}
+.service-banner:before{content:"";position:absolute;width:240px;height:240px;border:1px solid rgba(125,225,240,.22);border-radius:50%;right:-80px;top:-110px}
+.service-banner h3{color:#fff;font-size:1.45rem;max-width:460px;position:relative}
+.service-banner p{color:#BFD5DF;max-width:480px;font-size:.88rem;position:relative;margin:12px 0 0}
+.service-banner .chips{display:flex;gap:8px;flex-wrap:wrap;margin-top:20px;position:relative}
+.service-banner .chips span{font-size:.68rem;font-weight:750;border:1px solid rgba(255,255,255,.18);padding:6px 9px;border-radius:999px;background:rgba(255,255,255,.06)}
+.service-side-art{border:1px solid var(--line);border-radius:20px;background:#fff;display:grid;place-items:center;overflow:hidden}
+.service-side-art svg{width:100%;height:100%}
+@media(max-width:980px){.hero-visual{min-height:400px}.services-intro-visual{grid-template-columns:1fr}}
+@media(max-width:620px){.hero-visual{min-height:340px}.hero-orbit{width:300px;height:300px}.hero-graphic{width:300px}}
+@media(prefers-reduced-motion:reduce){.hero-orbit{animation:none}}
+
+</style>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23081B2A'/%3E%3Cpath d='M18 14h28v8H34v28h-8V22H18z' fill='%2365D1E8'/%3E%3C/svg%3E"><style>
+.floating-wa{position:fixed;right:22px;bottom:22px;z-index:90;width:54px;height:54px;border-radius:50%;display:grid;place-items:center;background:#18A96B;color:#fff;box-shadow:0 12px 30px rgba(24,169,107,.28);font-size:1.35rem;font-weight:800;transition:transform .2s}
+.floating-wa:hover{transform:translateY(-3px) scale(1.03)}
+@media(max-width:620px){.floating-wa{right:16px;bottom:16px;width:50px;height:50px}}
+</style></head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <a href="#top" class="brand"><span class="mark">Z</span> Zenvora Technologies</a>
+    <button class="menu-btn" id="menu-btn" aria-label="Open menu" aria-expanded="false">☰</button>
+     <ul class="nav-links" id="nav-links">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#process">Process</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <a href="#contact" class="nav-cta">Get a Shortlist</a>
+  </div>
+</header>
+
+<section class="hero" id="top">
+  <div class="wrap">
+    <div class="hero-inner">
+      <div>
+        <span class="tag">IT RECRUITMENT PARTNER</span>
+        <h1>Hire IT talent faster, with a partner who <span>understands the tech stack.</span></h1>
+        <p>Zenvora Technologies specializes in sourcing, screening, and placing engineering and IT professionals for growing companies across India. Pay only when you hire.</p>
+        <div class="hero-actions">
+          <a href="#contact" class="btn btn-primary">Share an open role <span>→</span></a>
+          <a href="#process" class="btn btn-outline">Our process</a>
+        </div>
+        <div class="hero-proof"><span class="proof-dot"></span> Human-led screening · IT &amp; Engineering focus</div>
+      </div>
+      <div class="hero-panel">
+        <div class="panel-top"><div class="panel-title">Hiring snapshot</div><div class="panel-badge">IT focused</div></div>
+        <div class="row"><span>Engagement model</span><strong>Pay on placement</strong></div>
+        <div class="row"><span>Upfront cost</span><strong>₹0</strong></div>
+        <div class="row"><span>Focus area</span><strong>IT &amp; Engineering</strong></div>
+        <div class="row"><span>Typical shortlist time</span><strong>3–5 business days</strong></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="stats-bar">
+  <div class="wrap stats-grid">
+    <div class="stat"><div class="num">100%</div><div class="label">Roles reviewed by a recruiter, not a keyword bot</div></div>
+    <div class="stat"><div class="num">0</div><div class="label">Upfront fees for hiring companies</div></div>
+    <div class="stat"><div class="num">IT-only</div><div class="label">Sector focus for deeper candidate fit</div></div>
+    <div class="stat"><div class="num">1:1</div><div class="label">Direct point of contact for every role</div></div>
+  </div>
+</div>
+
+<section class="services-bg" id="services">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="tag">SERVICES</span>
+      <h2>Recruitment support built around how IT teams actually hire</h2>
+      <p>Each engagement is scoped to the role, not sold as a bundled package.</p>
+    </div>
+    <div class="services-intro-visual reveal">
+      <div class="service-banner">
+        <h3>From job description to interview-ready shortlist.</h3>
+        <p>A focused recruitment workflow designed for technical teams — with human screening at every important step.</p>
+        <div class="chips"><span>Developers</span><span>QA</span><span>DevOps</span><span>Cloud</span><span>Product</span></div>
+      </div>
+      <div class="service-side-art" aria-hidden="true">
+        <svg viewBox="0 0 420 210" xmlns="http://www.w3.org/2000/svg">
+          <rect width="420" height="210" fill="#F8FBFC"/>
+          <circle cx="315" cy="42" r="78" fill="#EFF9FB"/>
+          <path d="M45 158 C105 105 150 175 210 118 S310 76 374 118" fill="none" stroke="#B9DDE5" stroke-width="2"/>
+          <circle cx="74" cy="140" r="20" fill="#CDEFF4"/><circle cx="165" cy="137" r="20" fill="#B8E6EC"/>
+          <circle cx="254" cy="105" r="20" fill="#A5DFE8"/><circle cx="352" cy="114" r="20" fill="#92D8E3"/>
+          <path d="M74 140 L165 137 L254 105 L352 114" fill="none" stroke="#1D8EAE" stroke-width="3" stroke-linecap="round"/>
+          <g fill="#0B3046"><rect x="57" y="167" width="35" height="5" rx="2.5"/><rect x="148" y="164" width="35" height="5" rx="2.5"/><rect x="237" y="132" width="35" height="5" rx="2.5"/><rect x="335" y="141" width="35" height="5" rx="2.5"/></g>
+          <text x="24" y="31" font-family="Inter, sans-serif" font-size="12" font-weight="800" fill="#1D8EAE">TECH TALENT FLOW</text>
+        </svg>
+      </div>
+    </div>
+    <div class="service-grid">
+      <div class="service-card">
+        <div class="service-icon">01</div>
+        <h3>Permanent Hiring</h3>
+        <p>End-to-end sourcing and screening for full-time developer, QA, DevOps, and product roles.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">02</div>
+        <h3>Contract Staffing</h3>
+        <p>Short-term and project-based IT resources for teams that need to scale quickly without a long hiring cycle.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">03</div>
+        <h3>Candidate Screening</h3>
+        <p>Technical and role-fit screening before a profile ever reaches your inbox, so interviews are worth the time.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">04</div>
+        <h3>Notice-Period Pipeline</h3>
+        <p>Access to candidates already in their notice period, reducing time-to-join for urgent openings.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">05</div>
+        <h3>Offer Management</h3>
+        <p>Support through salary negotiation and offer closure, so good candidates don't fall through at the last step.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">06</div>
+        <h3>Market Insights</h3>
+        <p>Straight talk on realistic salary bands and candidate availability for your role, before you post a JD.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="process">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="tag">HOW IT WORKS</span>
+      <h2>A straightforward, four-step process</h2>
+    </div>
+    <div class="process-line">
+      <div class="process-step">
+        <div class="process-visual"><svg viewBox="0 0 320 120" xmlns="http://www.w3.org/2000/svg"><rect x="32" y="20" width="165" height="78" rx="9" fill="#fff" stroke="#BFDCE4"/><rect x="48" y="36" width="78" height="7" rx="3" fill="#B8DDE5"/><rect x="48" y="53" width="130" height="6" rx="3" fill="#E1EDF0"/><rect x="48" y="68" width="108" height="6" rx="3" fill="#E1EDF0"/><circle cx="242" cy="58" r="30" fill="#DFF7FA"/><path d="M228 58l9 9 18-21" fill="none" stroke="#1D8EAE" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div class="circle">1</div>
+        <h4>Share the role</h4>
+        <p>Send the JD, must-have skills, and salary band — by call, email, or WhatsApp.</p>
+      </div>
+      <div class="process-step">
+        <div class="process-visual"><svg viewBox="0 0 320 120" xmlns="http://www.w3.org/2000/svg"><circle cx="82" cy="55" r="22" fill="#DFF7FA"/><circle cx="160" cy="55" r="22" fill="#C8EDF2"/><circle cx="238" cy="55" r="22" fill="#A9E1EA"/><path d="M104 55h34M182 55h34" stroke="#1D8EAE" stroke-width="4" stroke-linecap="round"/><circle cx="82" cy="55" r="7" fill="#1D8EAE"/><circle cx="160" cy="55" r="7" fill="#1D8EAE"/><circle cx="238" cy="55" r="7" fill="#1D8EAE"/><text x="57" y="94" font-family="Inter" font-size="10" font-weight="700" fill="#54707D">SOURCE</text><text x="134" y="94" font-family="Inter" font-size="10" font-weight="700" fill="#54707D">SCREEN</text><text x="216" y="94" font-family="Inter" font-size="10" font-weight="700" fill="#54707D">SHORTLIST</text></svg></div>
+        <div class="circle">2</div>
+        <h4>We source &amp; screen</h4>
+        <p>Candidates are shortlisted and checked for fit before you see a single profile.</p>
+      </div>
+      <div class="process-step">
+        <div class="process-visual"><svg viewBox="0 0 320 120" xmlns="http://www.w3.org/2000/svg"><rect x="50" y="20" width="220" height="78" rx="12" fill="#fff" stroke="#C9E1E7"/><circle cx="85" cy="59" r="19" fill="#DFF7FA"/><path d="M76 59l7 7 13-15" fill="none" stroke="#1D8EAE" stroke-width="5" stroke-linecap="round"/><rect x="120" y="43" width="110" height="7" rx="3" fill="#B8DDE5"/><rect x="120" y="58" width="80" height="6" rx="3" fill="#E1EDF0"/><rect x="120" y="72" width="95" height="6" rx="3" fill="#E1EDF0"/></svg></div>
+        <div class="circle">3</div>
+        <h4>You interview</h4>
+        <p>We coordinate scheduling and share context so interviews start on the right foot.</p>
+      </div>
+      <div class="process-step">
+        <div class="process-visual"><svg viewBox="0 0 320 120" xmlns="http://www.w3.org/2000/svg"><path d="M60 77L112 45l48 22 51-35" fill="none" stroke="#1D8EAE" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/><circle cx="60" cy="77" r="9" fill="#DFF7FA" stroke="#1D8EAE" stroke-width="3"/><circle cx="112" cy="45" r="9" fill="#DFF7FA" stroke="#1D8EAE" stroke-width="3"/><circle cx="160" cy="67" r="9" fill="#DFF7FA" stroke="#1D8EAE" stroke-width="3"/><circle cx="211" cy="32" r="9" fill="#DFF7FA" stroke="#1D8EAE" stroke-width="3"/><path d="M235 58l12 12 24-28" fill="none" stroke="#16809C" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div class="circle">4</div>
+        <h4>Offer &amp; join</h4>
+        <p>We support offer closure and stay engaged through notice period. Fee applies only once hired.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="testimonial-bg">
+  <div class="wrap">
+    <div class="testimonial-box">
+      <blockquote>"We're building Zenvora on the same standard we'd want as a hiring manager — fewer, better-matched candidates, not a flood of resumes."</blockquote>
+      <div class="attribution">— Sivasankar, Founder, Zenvora Technologies</div>
+    </div>
+  </div>
+</section>
+
+<div class="wrap">
+  <div class="industries">
+    <span>SOFTWARE PRODUCT</span>
+    <span>IT SERVICES</span>
+    <span>FINTECH</span>
+    <span>SAAS STARTUPS</span>
+    <span>ECOMMERCE TECH</span>
+  </div>
+</div>
+
+<section id="about">
+  <div class="wrap about-grid">
+    <div>
+      <span class="tag">ABOUT ZENVORA</span>
+      <h2>Founded on hands-on IT industry experience</h2>
+      <p class="about-intro">Zenvora Technologies was built to solve a specific problem in IT hiring: agencies that send volume instead of fit. We work on a focused number of roles at any time, so every shortlist reflects real screening — not a resume dump.</p>
+      <div class="about-points">
+        <div class="about-point">Focused candidate shortlists</div>
+        <div class="about-point">IT &amp; Engineering specialization</div>
+        <div class="about-point">Direct role ownership</div>
+        <div class="about-point">Support through offer closure</div>
+      </div>
+    </div>
+    <div class="founder-box">
+      <div class="initials">S</div>
+      <h4>Sivasankar</h4>
+      <div class="role">Founder, Zenvora Technologies</div>
+      <p class="bio">Sivasankar founded Zenvora Technologies after working within the IT industry, including time at Pure Software. That inside perspective on engineering hiring — what actually makes a candidate succeed on the job, not just on paper — shapes how every role is sourced here.</p>
+    </div>
+  </div>
+</section>
+
+<div class="wrap">
+  <div class="cta-banner">
+    <div>
+      <h2>Have a role open right now?</h2>
+      <p>Send the details today and get a shortlist within days.</p>
+    </div>
+    <a href="#contact" class="btn btn-primary">Get started</a>
+  </div>
+</div>
+
+<section id="contact">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="tag">CONTACT</span>
+      <h2>Tell us about the role</h2>
+      <p>We'll come back with next steps, usually within a day.</p>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-info-card">
+        <h3>Let’s discuss your next hire</h3><p>Share the basics and Zenvora can take it from there.</p>
+        <div class="row"><span>WhatsApp</span><a href="https://wa.me/910000000000">+91 00000 00000</a></div>
+        <div class="row"><span>Email</span><a href="mailto:hello@zenvoratechnologies.com">hello@zenvoratechnologies.com</a></div>
+        <div class="row"><span>Based in</span><span>India</span></div>
+        <div class="row"><span>Focus</span><span>IT &amp; Engineering Roles</span></div>
+      </div>
+      <form id="contact-form">
+        <div class="form-row">
+          <div class="field">
+            <label for="name">Your name</label>
+            <input type="text" id="name" name="name" placeholder="Full name" autocomplete="name" required>
+          </div>
+          <div class="field">
+            <label for="company">Company</label>
+            <input type="text" id="company" name="company" placeholder="Company name" autocomplete="organization" required>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="field">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" placeholder="you@company.com" autocomplete="email" required>
+          </div>
+          <div class="field">
+            <label for="role">Role you're hiring for</label>
+            <input type="text" id="role" name="role" placeholder="e.g. Backend Developer">
+          </div>
+        </div>
+        <div class="field">
+          <label for="message">Details</label>
+          <textarea id="message" name="message" rows="4" placeholder="Headcount, timeline, salary band"></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary" style="border:none; cursor:pointer;">Send details</button>
+        <div class="form-status" id="form-status"></div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="brand" style="color:var(--white);"><span class="mark">Z</span> Zenvora Technologies</div>
+        <p>Specialist IT recruitment and staffing partner, based in India.</p>
+      </div>
+      <div>
+        <h5>Company</h5>
+        <ul>
+          <li><a href="#about">About</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#process">Process</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Services</h5>
+        <ul>
+          <li><a href="#services">Permanent Hiring</a></li>
+          <li><a href="#services">Contract Staffing</a></li>
+          <li><a href="#services">Screening</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Contact</h5>
+        <ul>
+          <li><a href="mailto:hello@zenvoratechnologies.com">Email us</a></li>
+          <li><a href="https://wa.me/910000000000">WhatsApp</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© <span id="year"></span> Zenvora Technologies. All rights reserved.</span>
+      <span>Built for IT hiring, exclusively.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  const menuBtn = document.getElementById('menu-btn');
+  const navLinks = document.getElementById('nav-links');
+
+  menuBtn?.addEventListener('click', () => {
+    const open = navLinks.classList.toggle('mobile-open');
+    menuBtn.setAttribute('aria-expanded', String(open));
+    menuBtn.textContent = open ? '✕' : '☰';
+    menuBtn.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+  });
+
+  navLinks?.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      navLinks.classList.remove('mobile-open');
+      if(menuBtn){
+        menuBtn.textContent = '☰';
+        menuBtn.setAttribute('aria-expanded','false');
+        menuBtn.setAttribute('aria-label','Open menu');
+      }
+    });
+  });
+
+  const revealItems = document.querySelectorAll('.service-card,.process-step,.founder-box,.contact-info-card,.section-head,.about-copy,.cta-banner,.industries');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, index) => {
+      if(entry.isIntersecting){
+        entry.target.classList.add('reveal');
+        requestAnimationFrame(() => entry.target.classList.add('visible'));
+        observer.unobserve(entry.target);
+      }
+    });
+  }, {threshold:.12});
+
+  revealItems.forEach(el => observer.observe(el));
+
+  const form = document.getElementById('contact-form');
+  const status = document.getElementById('form-status');
+  form?.addEventListener('submit', function(e){
+    e.preventDefault();
+    const data = new FormData(form);
+    const name = data.get('name') || 'there';
+    status.textContent = `Thanks, ${name}. Your details are ready — connect this form to your email/CRM before going live.`;
+  });
+</script>
+
+<a class="floating-wa" href="https://wa.me/910000000000" target="_blank" rel="noopener" aria-label="Contact Zenvora on WhatsApp" title="WhatsApp Zenvora">◔</a></body>
+</html>
